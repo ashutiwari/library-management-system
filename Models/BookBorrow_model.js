@@ -9,6 +9,11 @@ const bookBorrowedSchema=mongoose.Schema({
         type:String,
         required:true
     },
+    bookName:{
+        type:String,
+        required:true
+    },
+
     bookId:{
         type:String,
         required:true
@@ -16,6 +21,10 @@ const bookBorrowedSchema=mongoose.Schema({
     subject:{
         type:String,
         required:true
+    },
+    date:{
+        type:Date,
+        default:new Date()
     }
 });
 
@@ -38,9 +47,28 @@ module.exports.removeBorrowedBook = function(Id,callback){
 }
 
 //method to find details in Database using ID:
+module.exports.getBorrowedBookByStudentId= function(studentId,callback){
+    let querry = {
+        studentId:studentId
+    }
+    BookBorrowed.find(querry,callback)
+}
+
+
+//method to find details in Database using ID:
+module.exports.getBorrowedBookByStudentIdAndBookId= function(bookBorrowedInfo,callback){
+    let querry = {
+        studentId:bookBorrowedInfo.studentId,
+        bookId :bookBorrowedInfo.bookId
+    }
+    BookBorrowed.findOne(querry,callback)
+}
+
+
+
 module.exports.getBorrowedBookByBookId= function(bookId,callback){
     let querry = {
         bookId:bookId
-    }  
-    BookBorrowed.findOne(querry,callback)
+    }
+    BookBorrowed.find(querry,callback)
 }

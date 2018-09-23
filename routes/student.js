@@ -2,7 +2,7 @@ const express = require('express');
 //Requiring express router
 const router = express.Router();
 //requiring model for Student
-const Student = require('../models/StudentInfo_model');
+const Student = require('../Models/StudentInfo_model');
 
 
 router.get('/getAllStudent',(req,res)=>{
@@ -24,16 +24,15 @@ Student.getAllStudent((err,resStudent)=>{
 })
 
 //Post request function: 
-router.post('/addStudent', (req, res) => {
+router.post('/resisterStudent', (req, res) => {
     //checking request body:
-    if (!req.body.name || !req.body.studentId || !req.body.password || !req.body.class) {
+    if (!req.body.name || !req.body.studentId || !req.body.class) {
         res.json({
             success: false,
             msg: 'Insufficient Data'
         });
     } else {
-        
-        Student.getStudentBystudentId(req.body.studentId, (err, reqStudent) => {
+        Student.getStudentByStudentId(req.body.studentId, (err, reqStudent) => {
             if (err)
                 res.json({
                     success: false,
@@ -49,9 +48,8 @@ router.post('/addStudent', (req, res) => {
 
                     let studentInfo = {
                         name: req.body.name,
-                        studentInfonstudentId: req.body.studentId,
-                        password: req.body.password,
-                        class: req.body.class,
+                        studentId: req.body.studentId,
+                        class: req.body.class
 
                     }
                     //function to add studentInfo to the database:
@@ -74,119 +72,9 @@ router.post('/addStudent', (req, res) => {
 });
 
 
-
-//Method to make the studentInfo login:
-router.post('/login', (req, res) => {
-    //checking request body:
-    if (!req.body.studentId || !req.body.password) {
-        res.json({
-            success: false,
-            msg: 'Insufficient Data'
-        });
-    } else {
-        let studentInfo = {
-            studentId: req.body.studentId,
-            password: req.body.password
-        }
-        Student.getStudentBystudentId(req.body.studentId, (err, reqStudent) => {
-            if (err)
-                res.json({
-                    success: false,
-                    msg: err
-                })
-            else {
-                if (!reqStudent) {
-                    res.json({
-                        success: false,
-                        msg: "studentId doesn't exists."
-                    });
-                } else {
-                    if (studentInfo.password != reqStudent.password) {
-                        res.json({
-                            success: false,
-                            msg: "Wrong Password"
-                        });
-                    } else {
-                        res.json({
-                            success: true,
-                            msg: {
-                                studentId: reqStudent.studentId,
-                                name: reqStudent.name,
-                                id: reqStudent._id,
-                                class:reqStudent.class
-                            }
-                        });
-                    }
-                }
-
-            }
-
-        });
-    }
-
-});
-
-
-//Method to Update Password:
-router.post('/updatePassword', (req, res) => {
-    if (!req.body.studentId || !req.body.password || !req.body.newPassword) {
-        res.json({
-            success: false,
-            msg: 'Insufficient Data'
-        });
-    } else {
-        let studentInfo = {
-            studentId: req.body.studentId,
-            password: req.body.password
-        }
-        Student.getStudentBystudentId(req.body.studentId, (err, reqStudent) => {
-            if (err)
-                res.json({
-                    success: false,
-                    msg: err
-                })
-            else {
-                if (!reqStudent) {
-                    res.json({
-                        success: false,
-                        msg: "studentId doesn't exists."
-                    });
-                } else {
-                    if (studentInfo.password != reqStudent.password) {
-                        res.json({
-                            success: false,
-                            msg: "Wrong Password"
-                        });
-                    } else {
-                        reqStudent.password = req.body.newPassword;
-                        Student.UpdatePassword(reqStudent, (err) => {
-                            if (err) {
-                                res.json({
-                                    success: false,
-                                    msg: err
-                                });
-                            } else {
-                                res.json({
-                                    success: true,
-                                    msg: "Password Successfully Updated.!"
-                                });
-                            }
-
-                        })
-
-                    }
-                }
-            }
-
-        });
-    }
-});
-
-
-//Method to delete studentInfo:
 router.post('/remove', (req, res) => {
     //checking request body:
-    if (!req.body.studentId || !req.body.password) {
+    if (!req.body.studentId) {
         res.json({
             success: false,
             msg: 'Insufficient Data'
@@ -194,9 +82,8 @@ router.post('/remove', (req, res) => {
     } else {
         let studentInfo = {
             studentId: req.body.studentId,
-            password: req.body.password
         }
-        Student.getStudentBystudentId(req.body.studentId, (err, reqStudent) => {
+        Student.getStudentByStudentId(req.body.studentId, (err, reqStudent) => {
             if (err)
                 res.json({
                     success: false,
@@ -209,34 +96,24 @@ router.post('/remove', (req, res) => {
                         msg: "studentId doesn't exists."
                     });
                 } else {
-                    if (studentInfo.password != reqStudent.password) {
-                        res.json({
-                            success: false,
-                            msg: "Wrong Password"
-                        });
-                    } else {
+                    Student.removeStudent(reqStudent._id, (err) => {
 
-                        Student.removeStudent(reqStudent._id, (err) => {
-
-                            if (err) {
-                                res.json({
-                                    success: false,
-                                    msg: err
-                                });
-                            } else {
-                                res.json({
-                                    success: true,
-                                    msg: "studentInfo Deleted Successfully..!"
-                                });
-                            }
+                        if (err) {
+                            res.json({
+                                success: false,
+                                msg: err
+                            });
+                        } else {
+                            res.json({
+                                success: true,
+                                msg: "studentInfo Deleted Successfully..!"
+                            });
+                        }
 
 
 
 
-                        })
-
-
-                    }
+                    })
                 }
 
             }

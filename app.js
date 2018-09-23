@@ -9,12 +9,28 @@ var usersRouter = require('./routes/users');
 var bookManagementRouter = require('./routes/bookManagement');
 var studentRouter = require('./routes/student');
 var borrowBookRouter =require('./routes/borrowBook');
-
-var borrowBook_model =require('./Models/BookManagement_model')
-var borrowBook_model =require('./Models/BookManagement_model')
-var BookManagement_model =require('./Models/BookManagement_model')
+var authorizationRouter = require('./routes/Authorization')
 
 var cors = require('cors');
+
+
+//-------------------MongoDB Operations---------------------
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/Library');
+
+mongoose.connection.on('connected', () => {
+    console.log("Connected to Database");
+
+})
+
+mongoose.connection.on('error', (err) => {
+    console.log("Error connecting Database");
+
+})
+
+
+//----------------mongo-----------------------------------
+
 
 
 var app = express();
@@ -34,6 +50,7 @@ app.use('/users', usersRouter);
 app.use('/student', studentRouter);
 app.use('/book', bookManagementRouter);
 app.use('/bookBorrow',borrowBookRouter);
+app.use('/auth',authorizationRouter);
 app.use('*', indexRouter);
 
 // catch 404 and forward to error handler

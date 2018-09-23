@@ -37,6 +37,6 @@ Book.findByIdAndRemove(Id,callback)
 module.exports.getBookByBookId= function(bookId,callback){
     let querry = {
         bookId:bookId
-    }  
-book.findOne(querry,callback)
+    } 
+Book.findOne(querry,callback)
 }

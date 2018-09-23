@@ -2,7 +2,7 @@ const express = require('express');
 //Requiring express router
 const router = express.Router();
 //requiring model for Book
-const Book = require('../BookManagement_model');
+const Book = require('../Models/BookManagement_model');
 
 
 router.get('/getAllBook', (req, res) => {
@@ -50,8 +50,7 @@ router.post('/addBook', (req, res) => {
                     let bookInfo = {
                         name: req.body.name,
                         bookId: req.body.bookId,
-                        password: req.body.password,
-                        sub: req.body.sub,
+                        subject: req.body.subject
 
                     }
                     //function to add user to the Bookbase:

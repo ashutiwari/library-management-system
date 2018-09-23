@@ -5,11 +5,7 @@ const studentSchema=mongoose.Schema({
         type:String,
         required:true
     },
-    StudentId:{
-        type:String,
-        required:true
-    },
-    password:{
+    studentId:{
         type:String,
         required:true
     },
@@ -39,18 +35,10 @@ module.exports.removeStudent = function(Id,callback){
 Student.findByIdAndRemove(Id,callback)
 }
 
-
 //method to find details in Database using Username
 module.exports.getStudentByStudentId= function(studentId,callback){
     let querry = {
         studentId:studentId
-    }  
-Student.findOne(querry,callback)
-}
-
-module.exports.UpdatePassword = function(studentInfo,callback){
-    let update = {
-        password: studentInfo.password
     }
-    Student.findByIdAndUpdate(studentInfo._id,update,callback)
+Student.findOne(querry,callback)
 }
