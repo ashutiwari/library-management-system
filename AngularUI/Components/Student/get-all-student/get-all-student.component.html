@@ -1,0 +1,38 @@
+<div class='container'>
+<h2>SEARCH All DETAILS OF STUDENTS</h2><br>
+
+
+<button class="btn-warning btn"  (click)="get()">All STUDENTS DETAILS</button><br><br>
+
+<table class='table'>
+
+  <thead>
+
+  <tr>
+
+    <th>ID</th>
+
+    <th>Name</th>
+
+    <th>Class</th>
+
+  </tr>
+
+</thead>
+
+<tbody *ngFor='let detail of details'>
+
+  <tr>
+
+    <td>{{detail.studentId}}</td>
+    <td>{{detail.name}}</td>
+    <td>{{detail.class}}</td>
+
+  </tr>
+
+</tbody>
+
+
+<p>{{response}}</p>
+
+

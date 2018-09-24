@@ -1,0 +1,13 @@
+<div class='container'>
+<h2>Add Books In Library</h2><br>
+
+
+<input type="text" name="name" placeholder="Name Of Book" [(ngModel)]='name'><br><br>
+
+<input type="text" bookId="bookId" placeholder="bookId" [(ngModel)]='bookId'><br><br>
+
+<input type="text" subject="subject" placeholder="subject" [(ngModel)]='subject'><br><br>
+
+<button class="btn-warning btn"  (click)="add()">Add</button><br><br>
+
+<p>{{response}}</p>

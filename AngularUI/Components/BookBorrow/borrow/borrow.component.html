@@ -1,0 +1,11 @@
+<div class='container'>
+<h2>Borrow Book</h2><br>
+
+
+<input type="text" bookId="bookId" placeholder="bookId" [(ngModel)]='bookId'><br><br>
+
+<input type="text" StudentId="studentId" placeholder="studentId" [(ngModel)]='studentId'><br><br>
+
+<button class="btn-warning btn"  (click)="borrow()">Borrow</button><br><br>
+
+<p>{{response}}</p>

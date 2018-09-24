@@ -1,0 +1,38 @@
+<div class='container'>
+<h2>All DETAILS OF AUTHORITY </h2><br>
+
+
+<button class="btn-warning btn"  (click)="get()">All DETAILS</button><br><br>
+
+<table class='table'>
+
+  <thead>
+
+  <tr>
+
+    <th>Auth_Id</th>
+
+    <th>Auth_Name</th>
+
+    <th>Auth_UserName</th>
+
+  </tr>
+
+</thead>
+
+<tbody *ngFor='let detail of details'>
+
+  <tr>
+
+    <td>{{detail._id}}</td>
+    <td>{{detail.name}}</td>
+    <td>{{detail.username}}</td>
+
+  </tr>
+
+</tbody>
+
+
+<p>{{response}}</p>
+
+

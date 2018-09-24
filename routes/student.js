@@ -24,7 +24,7 @@ Student.getAllStudent((err,resStudent)=>{
 })
 
 //Post request function: 
-router.post('/resisterStudent', (req, res) => {
+router.post('/registerStudent', (req, res) => {
     //checking request body:
     if (!req.body.name || !req.body.studentId || !req.body.class) {
         res.json({

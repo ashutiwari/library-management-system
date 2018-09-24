@@ -1,0 +1,49 @@
+<div class='container'>
+<h2>Search Borrow Detail For StudentID</h2><br>
+
+
+<input type="text" StudentId="studentId" placeholder="studentId" [(ngModel)]='studentId'><br><br>
+
+<button class="btn-warning btn"  (click)="searchByStudentId()">Get</button><br><br>
+
+
+<table class='table'>
+
+  <thead>
+
+  <tr>
+
+    <th>StudentID</th>
+
+    <th>StudentName</th>
+
+    <th>BookId</th>
+
+    <th>BookName</th>
+
+    <th>Subject</th>
+
+     <th>BorrowedDate</th>
+
+
+  </tr>
+
+</thead>
+
+<tbody *ngFor='let detail of details'>
+
+  <tr>
+
+    <td>{{detail.studentId}}</td>
+    <td>{{detail.studentName}}</td>
+    <td>{{detail.bookId}}</td>
+    <td>{{detail.bookName}}</td>
+    <td>{{detail.subject}}</td>
+    <td>{{detail.date}}</td>
+
+  </tr>
+
+</tbody>
+
+
+<p>{{response}}</p>

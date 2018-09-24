@@ -1,0 +1,38 @@
+<div class='container'>
+<h2>All DETAILS OF BOOKS</h2><br>
+
+
+<button class="btn-warning btn"  (click)="get()">All BOOKS DETAILS</button><br><br>
+
+<table class='table'>
+
+  <thead>
+
+  <tr>
+
+    <th>BOOK_Id</th>
+
+    <th>BOOK_Name</th>
+
+    <th>Subject</th>
+
+  </tr>
+
+</thead>
+
+<tbody *ngFor='let detail of details'>
+
+  <tr>
+
+    <td>{{detail.bookId}}</td>
+    <td>{{detail.name}}</td>
+    <td>{{detail.subject}}</td>
+
+  </tr>
+
+</tbody>
+
+
+<p>{{response}}</p>
+
+

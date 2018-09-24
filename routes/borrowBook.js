@@ -161,7 +161,7 @@ router.post('/return', (req, res) => {
                                                 else
                                                     res.json({
                                                         success: true,
-                                                        msg: reqBorrowedBook
+                                                        msg: "book returned successfully!!!"
                                                     });
                                             });
                                         }
