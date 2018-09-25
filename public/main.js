@@ -1482,7 +1482,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var AuthService = /** @class */ (function () {
     function AuthService(http) {
         this.http = http;
-        this.address = 'http://127.0.0.1:3000';
+        this.address = 'http://ashu.eraofiot.in:3000';
     }
     AuthService.prototype.Register = function (body) {
         var header = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
@@ -1574,7 +1574,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var BookBorrowService = /** @class */ (function () {
     function BookBorrowService(http) {
         this.http = http;
-        this.address = 'http://127.0.0.1:3000';
+        this.address = 'http://ashu.eraofiot.in:3000';
     }
     BookBorrowService.prototype.Borrow = function (body) {
         var header = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
@@ -1652,7 +1652,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var BookService = /** @class */ (function () {
     function BookService(http) {
         this.http = http;
-        this.address = 'http://127.0.0.1:3000';
+        this.address = 'http://ashu.eraofiot.in:3000';
     }
     BookService.prototype.Add = function (body) {
         var header = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
@@ -1753,7 +1753,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var StuService = /** @class */ (function () {
     function StuService(http) {
         this.http = http;
-        this.address = 'http://127.0.0.1:3000';
+        this.address = 'http://ashu.eraofiot.in:3000';
     }
     StuService.prototype.Register = function (body) {
         var header = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
