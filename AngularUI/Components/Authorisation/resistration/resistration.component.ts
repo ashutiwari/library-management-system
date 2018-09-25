@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../Services/auth.service';
 
 
-
-
 @Component({
   selector: 'app-resistration',
   templateUrl: './resistration.component.html',

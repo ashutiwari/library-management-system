@@ -45,7 +45,6 @@ router.post('/registerStudent', (req, res) => {
                         msg: "studentId already exists."
                     })
                 } else {
-
                     let studentInfo = {
                         name: req.body.name,
                         studentId: req.body.studentId,
